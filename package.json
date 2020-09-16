@@ -1,0 +1,29 @@
+{
+  "name": "kiss-fetch-retry",
+  "version": "0.0.1",
+  "description": "Extension to FetchAPI, retries the fetch after specified timeout",
+  "main": "./dist/kiss-fetch-retry-cjs.js",
+  "module": "./dist/kiss-fetch-retry.mjs",
+  "types": "./dist/kiss-fetch-retry.d.ts",
+  "scripts": {
+    "build": "del dist && rollup -c && npm run compress-amd",
+     "compress-amd": "uglifyjs --compress --mangle -o dist/kiss-fetch-retry-amd.min.js dist/kiss-fetch-retry-amd.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peracto/kiss-fetch-retry.git"
+  },
+  "keywords": [],
+  "author": "Gary Ranson",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.6.1",
+    "del-cli": "^1.1.0",
+    "rollup": "^0.56.5",
+    "rollup-plugin-typescript2": "^0.12.0",
+    "typescript": "^2.7.2",
+    "uglify-es": "^3.3.9"
+  }
+}
