@@ -1,10 +1,10 @@
 {
   "name": "kiss-fetch-retry",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Extension to FetchAPI, retries the fetch after specified timeout",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
-  "types": "dist/src",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "del dist && rollup -c rollup.config.js"
   },
@@ -25,12 +25,8 @@
     "del-cli": "^1.1.0",
     "rollup": "^2.27.1",
     "rollup-plugin-auto-external": "^2.0.0",
-    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.27.2",
     "tslib": "^2.0.1",
-    "typescript": "^4.0.2",
-    "uglify-es": "^3.3.9"
-  },
-  "dependencies": {
-    "rollup-plugin-typescript2": "^0.27.2"
+    "typescript": "^4.0.2"
   }
 }
