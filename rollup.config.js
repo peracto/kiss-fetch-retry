@@ -1,20 +1,18 @@
 import typescript from 'rollup-plugin-typescript2';
 
-export default ((name) => ({
-  input: `lib/${name}.ts`,
+export default {
+  input: `lib/index.ts`,
   plugins: [typescript()],
   output: [
     {
-      file: `dist/${name}-cjs.js`,
+      file: `dist/index.cjs.js`,
       format: 'cjs'
     }, {
-      file: `dist/${name}.mjs`,
+      file: `dist/index.mjs`,
       format: 'es'
     }, {
-      file: `dist/${name}-amd.js`,
+      file: `dist/index.amd.js`,
       format: 'amd',
     }
   ]
-}))(
-    "kiss-fetch-retry"
-)
+}

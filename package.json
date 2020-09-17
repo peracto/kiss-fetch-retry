@@ -1,13 +1,13 @@
 {
   "name": "kiss-fetch-retry",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Extension to FetchAPI, retries the fetch after specified timeout",
-  "main": "./dist/kiss-fetch-retry-cjs.js",
-  "module": "./dist/kiss-fetch-retry.mjs",
-  "types": "./dist/kiss-fetch-retry.d.ts",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "del dist && rollup -c && npm run compress-amd",
-     "compress-amd": "uglifyjs --compress --mangle -o dist/kiss-fetch-retry-amd.min.js dist/kiss-fetch-retry-amd.js"
+    "compress-amd": "uglifyjs --compress --mangle -o dist/index.amd.min.js dist/index.amd.js"
   },
   "repository": {
     "type": "git",
