@@ -1,18 +1,28 @@
-import typescript from 'rollup-plugin-typescript2';
+import commonjs from "@rollup/plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
+import typescriptPlugin from "rollup-plugin-typescript2";
+//import typescriptPlugin from "@rollup/plugin-typescript";
+import autoExternal from "rollup-plugin-auto-external";
+import pkg from "./package.json";
 
 export default {
-  input: `lib/index.ts`,
-  plugins: [typescript()],
+  input: "src/index.ts",
   output: [
     {
-      file: `dist/index.cjs.js`,
-      format: 'cjs'
-    }, {
-      file: `dist/index.mjs`,
-      format: 'es'
-    }, {
-      file: `dist/index.amd.js`,
-      format: 'amd',
+      file: pkg.main,
+      format: "cjs",
+      sourcemap: true
+    },
+    {
+      file: pkg.module,
+      format: "es",
+      sourcemap: true
     }
+  ],
+  plugins: [
+    autoExternal(),
+    resolve(),
+    commonjs(),
+    typescriptPlugin() //{ objectHashIgnoreUnknownHack: true })
   ]
-}
+};

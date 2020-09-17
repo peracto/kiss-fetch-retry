@@ -18,9 +18,8 @@ const defaultShouldRetry = (response: Response) => {
 }
 
 const delay = (timeout:number) => new Promise(resolve => setTimeout(resolve, timeout))
-const getWait = (waitPeriods:number[], retry:number) => waitPeriods[retry >= waitPeriods.length ? waitPeriods.length - 1 : retry]
+const getWait = (waitPeriods:number[], retry:number) => waitPeriods[Math.min(retry,waitPeriods.length-1)]
 const defaultWaitTimeout = (value:number) => value
-
 
 export function fetchRetryFactory (options: FetchRetryOptions = {}) {
     const maxRetries = options.maxRetries || defaultMaxRetries
@@ -29,7 +28,7 @@ export function fetchRetryFactory (options: FetchRetryOptions = {}) {
     const getWaitTimeout = options.waitTimeout || defaultWaitTimeout
     const _fetch = options.fetch || fetch
 
-    return async function retryFetch(input: Request | string, init?: RequestInit): Promise<Response> {
+    return async function fetchRetry(input: Request | string, init?: RequestInit): Promise<Response> {
         for (let retry = 0; ; retry++) {
             const response = await _fetch(input, init)
             if (response.ok || retry >= maxRetries || !shouldRetry(response, retry)) {
@@ -44,4 +43,3 @@ export function fetchRetryFactory (options: FetchRetryOptions = {}) {
         }
     }
 }
-
